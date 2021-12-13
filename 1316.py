@@ -1,20 +1,25 @@
-# word = input()
+word_count = int(input())
+words_list = []
 
-# def is_group_word(word:str):
+for _ in range(word_count):
+    words_list.append(input())
 
-#     word_group_list = []
+no_sequence_check_count = 0
 
-#     print(len(word))
-#     i = 0
-#     while True:
-#         j = 1
-#         while word[i] == word[i+j]:
-#             if i+j < len(word):
-#                 j += 1
-#             else:
-#                 word_group_list.append(word[i])
-#         i += j
-        
-#     return word_group_list
+for h in words_list:
 
-# is_group_word(word)
+    alphabet_list = []  
+
+    for i in range(len(h)-1):
+        if h[i] != h[i+1]:
+            alphabet_list.append(h[i])
+    alphabet_list.append(h[-1])
+
+    alphabet_list.sort()
+    
+    for i in range(len(alphabet_list)-1):
+        if alphabet_list[i] == alphabet_list[i+1]:
+            no_sequence_check_count += 1
+            break
+
+print(word_count - no_sequence_check_count)
