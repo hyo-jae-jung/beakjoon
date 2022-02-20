@@ -1,40 +1,50 @@
-M,N = input().split()
-tomato_box = [list(map(int,input().split())) for _ in range(int(N))]
+import time as tm
+from collections import deque
 
-for i in tomato_box:
-    i.insert(0,0)
-    i.append(0)
+start = tm.time()
+def solution(m, n, tomatoes):
+    count = 0  # Count number of days
+    deq = deque()
+    # deq = list()
+    D = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
-tomato_box.insert(0,[0]*(int(M)+2))
-tomato_box.append([0]*(int(M)+2))
+    def search(row, col):
+        searched_list = []
 
-day = 0
+        for i, j in D:
+            if (row + i < N and col + j < M) and (row + i >= 0 and col + j >= 0):
+                if tomatoes[row + i][col + j] == 0:
+                    tomatoes[row + i][col + j] = 1
+                    searched_list.append((row + i, col + j))
 
-while True:
-    local_list = []
-    for i in range(1,int(N)+1):
-        for j in range(1,int(M)+1):
-            if tomato_box[i][j] not in [-1,1]:
-                if 1 in [tomato_box[i-1][j],tomato_box[i][j-1],tomato_box[i+1][j],tomato_box[i][j+1]]:
-                    local_list.append([i,j])
-    
-    for i,j in local_list:
-        tomato_box[i][j] = 1
+        return searched_list
 
-    if len(local_list) == 0:
-        if 0 in tomato_box[1:int(N)+1][0][1:int(M)+1]:
-            day = -1
-        break
-    day += 1
+    # Add all riped tomatoes
+    for r in range(N):
+        for c in range(M):
+            if tomatoes[r][c] == 1:
+                deq.append((r, c))
 
-print(day)
+    # Search begin
+    while deq:
+        for _ in range(len(deq)):
+            r, c = deq.popleft()
+            for tomato in search(r, c):
+                deq.append(tomato)
+        count += 1
 
-"""
-map
-np.array
-insert
+    # Check unriped tomato(es) after search
+    for r in range(N):
+        for c in range(M):
+            if tomatoes[r][c] == 0:
+                return -1
 
-ideas
-if 많이 쓰기 싫어서 상자의 둘레를 0으로 padding
-체크하는 도중  토마토가 익어버리면 익은 토마토로 간주하기 때문에 체크와 변화는 따로 해야함
-"""
+    return count - 1
+
+
+if __name__ == "__main__":
+    M, N = map(int, input().split(" "))
+    tomatoes = [[int(n) for n in input().split(" ")] for _ in range(N)]
+    print(solution(M, N, tomatoes))
+end = tm.time()
+print(end-start)
