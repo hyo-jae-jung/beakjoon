@@ -9,3 +9,6 @@ for i in range(1,N+1):
         break
 else:
     print(0)
+
+    """여기서 배운건 for else의 활용
+    """
