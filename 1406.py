@@ -2,7 +2,7 @@ sentence = input()
 sentence=list(sentence)
 N = len(sentence)
 command_cnt = int(input())
-command_list = [input() for _ in range(command_cnt)]
+command_list = (input() for _ in range(command_cnt))
 cursor_position = N
 for i in command_list:
     if i[0] == 'L' and cursor_position != 0: cursor_position-=1
