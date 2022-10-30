@@ -8,3 +8,4 @@ for i,l in enumerate(table,1):
     if max_num in l:
         print(max_num)
         print("{} {}".format(i,l.index(max_num)+1))
+        break
