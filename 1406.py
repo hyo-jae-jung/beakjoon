@@ -1,3 +1,7 @@
+
+
+
+""" false 1
 sentence = input()
 sentence=list(sentence)
 N = len(sentence)
@@ -17,4 +21,5 @@ for i in command_list:
         cursor_position+=1
 
 print(''.join(sentence))
+"""
 
