@@ -1,12 +1,12 @@
 import sys
 
 answer = []
-loop_cnt=0
 while True:
     sentence = sys.stdin.readline().rstrip()
     if sentence =='.': break
     temp=[]
     for i in sentence:
+        yn = ''
         try:
             if i == '(':
                 temp.append(i)
@@ -14,22 +14,22 @@ while True:
                 temp.append(i)
             elif i == ')':
                 if temp.pop() != '(':
-                    answer.append('no')
+                    yn = 'no'
                     break
             elif i == ']':
                 if temp.pop() != '[':
-                    answer.append('no')
+                    yn = 'no'
                     break
         except:
-            answer.append('no')
+            yn = 'no'
             break
-
-    if len(answer)!=loop_cnt:
+    if yn != 'no':
         if len(temp)==0:
-            answer.append('yes')
+            yn = 'yes'
         else:
-            answer.append('no')
-    loop_cnt+=1
+            yn = 'no'
+    
+    answer.append(yn)
 
 for i in answer:
     print(i)
