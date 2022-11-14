@@ -30,3 +30,19 @@ input()은 prompt message 기능도 있어서 일을 더 함.
 에라토스테네스의 체
 
 컨셉은 알겠는데 문제에 많이 나오니 숙련도를 높여야 겠다..
+
+###############################
+itertools에 permutations, combinations는 잘 쓰고 있는데
+얘네는 중복허용 안함. 중복허용(복원추출)하려면
+product, combinations_with_replacement를 사용해야함
+
+https://docs.python.org/ko/3/library/itertools.html?highlight=product#module-itertools
+
+이렇게 4개가 조합형 이터레이터의 전부
+
+itertools에 진작에 알았으면 좋았을 다양한 기능이 있다.
+cycle, accumulate, ...
+써보자.
+###############################
+
+functools라는거도 있다..
