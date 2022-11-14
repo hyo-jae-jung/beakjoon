@@ -16,13 +16,10 @@ for i in range(1,len(books)):
         cnt+=1
 
 temp = []
-for i in books1:
-    temp.append(i)
-    for j in books1:
-        if temp[-1][1] > j[1]:
-            temp.pop()
-            temp.append(j)
+for i in range(len(books1)):
+    for j in range(1,len(books1)):
+        if books1[i][1] > books1[j][1]:
             break
-
-print(books1)
-print(temp)
+    else:
+        temp.append(books1[i])
+        
