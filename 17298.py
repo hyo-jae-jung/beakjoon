@@ -4,7 +4,20 @@ from collections import deque
 N = int(sys.stdin.readline().strip())
 A = deque(map(int,sys.stdin.readline().strip().split()))
 
+"""false 3 : time over
+NGE = deque()
 
+def NGE(a,A):
+    for i in A:
+        if a < i:
+            return i
+    else:
+        return -1
+answer = deque()
+while A:
+    answer.append(NGE(A.popleft(),A))
+
+print(*answer)"""
 
 """false 2 : time over
 NGE = deque([-1])
