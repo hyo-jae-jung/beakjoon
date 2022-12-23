@@ -2,7 +2,23 @@ import sys
 from collections import deque
 
 N = int(sys.stdin.readline().strip())
-A = deque(map(int,sys.stdin.readline().strip().split()))
+A = list(map(int,sys.stdin.readline().strip().split()))
+answer = []
+i = 0
+j = 0
+while i < len(A)-1:
+    if A[i] > max(A[i+1:]):
+        answer.append(-1)
+        i+=1
+    elif A[i] < A[i+j+1]:
+        answer.extend([A[i+j+1]]*j)
+        j = 0
+    else:
+        j+=1
+
+    i+=1
+
+print(answer)
 
 """false 3 : time over
 NGE = deque()
