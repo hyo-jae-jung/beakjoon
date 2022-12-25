@@ -1,28 +1,42 @@
-Y,X = map(int,input().split())
-board = []
-for i in range(Y):    
-    board.extend(list(input()))
+import sys
+N,M = map(int,sys.stdin.readline().strip().split())
+input_board = [sys.stdin.readline().strip() for _ in range(N)]
+first_color = 'B'
+def cnt_board(board,first_color):
+    answer = []
+    for i,j in enumerate(board):
+        temp = []
+        for k,l in enumerate(j):
+            if i%2 == 0:
+                if k%2 == 0:
+                    if l == first_color:
+                        temp.append(0)
+                    else:
+                        temp.append(1)
+                else:
+                    if l != first_color:
+                        temp.append(0)
+                    else:
+                        temp.append(1)
+            else:
+                if k%2 != 0:
+                    if l == first_color:
+                        temp.append(0)
+                    else:
+                        temp.append(1)
+                else:
+                    if l != first_color:
+                        temp.append(0)
+                    else:
+                        temp.append(1)
+        answer.append(temp)
+    return answer
 
-def chess_board(first_color:str)->list:
+answer = []
+for i in range(N-7):
+    for j in range(M-7):
+        
 
-    chess_board = []
-    color_num ={'B':0,'W':1}
-    one_line = ['B','W','B','W','B','W','B','W']
-    one_line_reverse = list(reversed(one_line))
 
-    for i in range(8):
-        if i%2 == color_num[first_color]:
-            chess_board.extend(one_line)
-        else:
-            chess_board.extend(one_line_reverse)
-    return  chess_board
-    
-chess_board_B = chess_board('B')
-chess_board_W = chess_board('W')
-
-for i in range(X-7):
-    for j in range(Y-7):
-        chess_board_sample = []
-        for k in range(1,9):
-            chess_board_sample.extend(board[(8+(X-8))*(k-1)+X*(Y-8):(8+(X-8))*(k)+X*(Y-8)])
-        print(chess_board_sample)
+if __name__ == "__main__":
+    print(cnt_board(input_board,first_color))
