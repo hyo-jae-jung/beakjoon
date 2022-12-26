@@ -1,7 +1,8 @@
 import sys
+
 N,M = map(int,sys.stdin.readline().strip().split())
 input_board = [sys.stdin.readline().strip() for _ in range(N)]
-first_color = 'B'
+
 def cnt_board(board,first_color):
     answer = []
     for i,j in enumerate(board):
@@ -31,12 +32,20 @@ def cnt_board(board,first_color):
                         temp.append(1)
         answer.append(temp)
     return answer
-
-answer = []
-for i in range(N-7):
-    for j in range(M-7):
-        
-
+def cnt_sum(cnt_board,N,M):
+    answer=[]
+    for i in range(N-7):
+        for j in range(M-7):
+            temp = 0
+            for k in cnt_board[0+i:8+i]:
+                temp+=sum(k[0+j:8+j])
+            answer.append(temp)
+    return answer
+cnt_board_B = cnt_board(input_board,'B')
+cnt_board_W = cnt_board(input_board,'W')
+sum_B = cnt_sum(cnt_board_B,N,M)
+sum_W = cnt_sum(cnt_board_W,N,M)
 
 if __name__ == "__main__":
-    print(cnt_board(input_board,first_color))
+            
+    print(min(sum_W+sum_B))
