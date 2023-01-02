@@ -1,14 +1,12 @@
-import sys
-
-N = int(sys.stdin.readline().strip())
-
-def stars(number:int):
-    if number == 1:
-        sys.stdout.write('*')
-
-    elif number == 3:
-        for i in range(number):
-            for j in range(number):
-                if j%3 == 1:
-
-# fail...
+def star(n:int)->str:
+    if n==1:
+        return '*'
+    else:
+        temp = ''
+        for i in range(3):
+            for i in range(3):
+                temp+=star(n-1)
+            temp+='\n'
+        return temp
+        
+print(star(2))
