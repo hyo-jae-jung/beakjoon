@@ -57,3 +57,18 @@ ex) dict.fromkeys([1,2,3,4,5],0)
 
 최대공약수 : math.gcd  
 최소공배수 : math.lcm  (python3.9 이상에서 사용 가능)
+
+##################################
+
+이분탐색 라이브러리 및 함수  
+
+from bisect import bisect_left, bisect_right  
+
+def cnt_within_range(arr, left_v, right_v):  
+    left_idx = bisect_left(arr, left_v)  
+    right_idx = bisect_right(arr, right_v)  
+    return right_idx - left_idx  
+
+이분탐색으로 원소 개수 찾으면 시간복잡도 O(nlogn)이라 더 빠름  
+
+##################################
