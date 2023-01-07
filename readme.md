@@ -69,6 +69,9 @@ def cnt_within_range(arr, left_v, right_v):
     right_idx = bisect_right(arr, right_v)  
     return right_idx - left_idx  
 
-이분탐색으로 원소 개수 찾으면 시간복잡도 O(nlogn)이라 더 빠름  
+이분탐색으로 원소 개수 찾으면 시간복잡도 O(logn)이라 더 빠름  
 
 ##################################
+
+Pascal's rule  
+nCk + nC(k+1) = (n+1)C(k+1)  
