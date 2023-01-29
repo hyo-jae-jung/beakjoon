@@ -113,5 +113,16 @@ DP에서 시간복잡도 줄이는 방법이 memoization
 
 ##################################  
 
-from copy import copy  
+from copy import copy, deepcopy  
 
+[:]  
+
+##################################  
+
+Heap, Back Tracking  
+
+HashMap  이미 사용하고 있던 dict 활용  
+
+##################################  
+
+list(zip(dict.keys(),dict.values()))  
