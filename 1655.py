@@ -1,18 +1,13 @@
 from sys import stdin 
-from collections import deque 
-from bisect import bisect_left
+import heapq
 
-beak = deque()
-younger_bro = deque()
+beak = list()
+younger_bro = list()
 N = int(stdin.readline().strip())
 
-answer = []
 for i in range(N):
     said = int(stdin.readline().strip())
-    beak.insert(bisect_left(beak,said),said)
-    answer.append(beak[i//2])
+    heapq.heappush(beak,said)
+    younger_bro.append(heapq.nsmallest(i//2+1,beak)[-1])
 
-print(answer,sep='\n')
-
-## 시간초가고 heap 활용이 팀인거 같음...
-
+print(younger_bro,sep='\n')
