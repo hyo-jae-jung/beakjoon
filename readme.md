@@ -61,7 +61,13 @@ functools라는거도 있다..
 dict.fromkeys(key_list,value(단일원소))  
 ex) dict.fromkeys([1,2,3,4,5],0)  
 -->{1: 0, 2: 0, 3: 0, 4: 0, 5: 0}  
-  
+이거말고  
+
+from collections import defaultdict  
+가 일반적으로는 좋은 것 같다.  
+
+하지만 특성에 맞게 취사선택을 하면 된다.  
+
 ##################################  
 
 최대공약수 : math.gcd  
