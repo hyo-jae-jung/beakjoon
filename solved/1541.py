@@ -1,26 +1,12 @@
-from sys import stdin
+from sys import stdin 
 
-fomula = stdin.readline().strip()
+string = stdin.readline().strip().split('-')
 
-num = []
-pm = []
-temp=''
-for i in fomula:
-    if i not in ['+','-']:
-        temp+=i
+answer = 0
+for i,j in enumerate(string):
+    if i == 0:
+        answer+=sum(map(int,j.split('+')))
     else:
-        num.append(int(temp))
-        pm.append(i)
-        temp = ''
-else:
-    num.append(int(temp))
-
-if '-' in pm:
-    i = pm.index('-')
-    pm = ['+']*i + ['-']*(len(pm)-i)
-
-answer = str(num[0])
-for i,j in zip(num[1:],pm):
-    answer+=str(j)+str(i)
-
-print(eval(answer))
+        answer-=sum(map(int,j.split('+')))
+        
+print(answer)
