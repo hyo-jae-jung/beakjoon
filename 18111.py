@@ -8,21 +8,19 @@ for _ in range(N):
 
 earth_arr = sum(earth_met,[])
     
-right = (sum(earth_arr)+B)//(N*M)
-left = 0
+max_floor = (sum(earth_arr)+B)//(N*M)
+min_floor = 0
+criterion_elapsed_time = sum((i-min_floor)*2 if i>min_floor else (min_floor-i) for i in earth_arr)
+cnt = 0
+while min_floor <= max_floor:
+    mid = (max_floor+min_floor)//2
+    comparison_elapsed_time = sum((i-mid)*2 if i>mid else (mid-i) for i in earth_arr)
 
-while left <= right:
-    mid = (right+left)//2
-    left_time = sum((i-left)*2 if i>left else (left-i) for i in earth_arr)
-    mid_time = sum((i-mid)*2 if i>mid else (mid-i) for i in earth_arr)
-    right_time = sum((i-right)*2 if i>right else (right-i) for i in earth_arr)
-
-    if abs(left_time - mid_time) > abs(right_time - mid_time):
-        left = mid + 1
-    elif abs(left_time - mid_time) < abs(right_time - mid_time):
-        right = mid - 1
+    if comparison_elapsed_time <= criterion_elapsed_time:
+        max_floor = mid - 1 
+        criterion_elapsed_time = comparison_elapsed_time
     else:
-        left = (left+mid)//2
-        right = (mid+right)//2
+        min_floor = mid + 1
+    cnt+=1
 
-print(mid_time,mid)
+print(criterion_elapsed_time,mid,cnt)
