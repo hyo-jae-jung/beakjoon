@@ -155,3 +155,6 @@ resursion이 얼마나 깊은지도 체크를 해야 하는건가?? ㄷㄷ
 Dictionary Comprehension
 {key:value for key,value in dict.items()}
 뭐 이런식으로 사용가능. 
+
+##################################  
+I wanna go home..
