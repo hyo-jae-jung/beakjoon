@@ -157,5 +157,10 @@ Dictionary Comprehension
 뭐 이런식으로 사용가능. 
 
 ##################################  
-I wanna go home..
-ㅠㅠ
+
+remove vs discard
+
+################################
+
+서로소
+
