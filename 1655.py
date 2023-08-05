@@ -1,19 +1,14 @@
 from sys import stdin 
-from heapq import heappop,heappush,heapify
+from heapq import heappop,heappush
 
-beak = list()
 younger_bro = list()
 N = int(stdin.readline().strip())
-
+answer = []
 for i in range(N):
     spare = []
     said = int(stdin.readline().strip())
-    heappush(beak,said)
-    for j in range(i//2+1):
-        spare.append(heappop(beak))
-    else:
-        younger_bro.append(spare[-1])
-        beak+=spare
-        heapify(beak)
+    heappush(younger_bro,said)
+    print(younger_bro)
+    answer.append(younger_bro[i//2])
 
-print(*younger_bro,sep='\n')
+print(*answer,sep='\n')
