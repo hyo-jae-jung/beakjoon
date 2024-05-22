@@ -1,3 +1,9 @@
-import sys
+from sys import stdin 
 
-print(len(sys.stdin.readline().strip()))
+n = int(stdin.readline().strip())
+ans = 0
+for _ in range(n):
+    h,w = map(int,stdin.readline().strip().split())
+    ans = max(ans,h*w)
+
+print(ans)
