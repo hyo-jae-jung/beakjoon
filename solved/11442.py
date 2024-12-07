@@ -14,7 +14,7 @@ def square_matrix_mul(a, b, size=SIZE):
      for i in range(size):
           for j in range(size):
                for k in range(size):
-                 new[i][j] += (a[i][k] * b[k][j])%1000000007
+                 new[i][j] += (a[i][k] * b[k][j])%1000000007 # 값이 크기가 커지면 계산량이 많아지기 때문에 속도에 영향을 미친다
 
      return new
 
@@ -27,7 +27,7 @@ def get_nth(n):
             matrix = square_matrix_mul(matrix, tmp)
         n //= 2
         tmp = square_matrix_mul(tmp, tmp)
-
+    print(matrix)
     return matrix
 
 
