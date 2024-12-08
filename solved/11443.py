@@ -1,3 +1,5 @@
+from sys import stdin  
+
 import sys
 
 n = int(sys.stdin.readline().strip())
@@ -5,7 +7,6 @@ n = int(sys.stdin.readline().strip())
 SIZE = 2
 ZERO = [[1, 0], [0, 1]]
 BASE = [[1, 1], [1, 0]]
-
 
 def square_matrix_mul(a, b, size=SIZE):
 
@@ -27,8 +28,7 @@ def get_nth(n):
             matrix = square_matrix_mul(matrix, tmp)
         n //= 2
         tmp = square_matrix_mul(tmp, tmp)
-        
+
     return matrix
 
-
-print(get_nth(n if n%2 == 0 else n+1)[1][0]%1000000007)
+print((get_nth(n if n%2 == 1 else n+1)[1][0] - 1)%1000000007)
