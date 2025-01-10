@@ -1,19 +1,19 @@
 from sys import stdin 
+d = {1:1,2:0}
 N = int(stdin.readline().strip())
-s = [1,1,0]
 i = 2
 while N > 1:
     if N%i == 0:
-        s[i]+=1
+        if not d.get(i):
+            d.update({i:0})
+        d[i]+=1
         N = N//i
     else:
-        s.append(0)
         i+=1
 
 answer = 1
-for i,j in enumerate(s[2:],2):
-    if j:
-        answer*=i**(j//2)
+for key,value in d.items():
+    answer*=key**(value//2)
 
 print(answer)
     

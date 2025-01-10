@@ -6,3 +6,4 @@ for _ in range(N-1):
     nums.append(nums[-1]*float(stdin.readline().strip()))
 
 print(nums)
+print(nums[3]/nums[0])
