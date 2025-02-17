@@ -1,5 +1,4 @@
 from sys import stdin 
-from heapq import heapify, heappop
 
 N = int(stdin.readline().strip())
 arr = stdin.readline().strip()
