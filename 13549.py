@@ -1,20 +1,34 @@
-from sys import stdin 
-from collections import deque
+import sys
+sys.setrecursionlimit(10**7)
 
-N,K = map(int, stdin.readline().strip().split())
+N,K = map(int, sys.stdin.readline().strip().split())
+M = 10000
 time = 1e6
-queue = deque([(N,0)])
-visited_cnt = [1e6]*100001
-while queue:
-    soobin,sec = queue.popleft()
+visited_cnt = [time]*(M+1)
 
-    if soobin == K:
-        time = min(time,sec)
+def dfs(x,cnt=0):
+    if x < 1 or x > M:
+        return False
+    
+    if x == K:
+        visited_cnt[x] = min(visited_cnt[x],cnt)
+        return True
+    
+    if x*2 <= M:
+        if visited_cnt[x*2] > cnt:
+            visited_cnt[x*2] = cnt
+            dfs(x*2,cnt)
+    
+    if x-1 > 0:
+        if visited_cnt[x-1] > cnt+1:
+            visited_cnt[x-1] = cnt+1
+            dfs(x-1,cnt+1)
+    
+    if x+1 <= M:
+        if visited_cnt[x+1] > cnt+1:
+            visited_cnt[x+1] = cnt+1
+            dfs(x+1,cnt+1)
 
-    if time >= sec and visited_cnt[soobin] >= sec:
-        visited_cnt[soobin] = sec
-        if 0 <= soobin-1 <= 100000:queue.append((soobin-1,sec+1))
-        if 0 <= soobin+1 <= 100000:queue.append((soobin+1,sec+1))
-        if 0 <= soobin*2 <= 100000:queue.append((soobin*2,sec))
-
-print(time)
+dfs(N)
+print(visited_cnt)
+print(visited_cnt[K])
