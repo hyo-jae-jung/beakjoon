@@ -5,19 +5,13 @@ stairs = []
 for _ in range(N):
     stairs.append(int(stdin.readline().strip()))
 
-dp = [[0]*(N+1) for _ in range(2)]
+dp = stairs[:3].copy()
+print(dp)
+for i in range(4,N):
+    dp.append(stairs[i] + min(dp[i-1],dp[i-2]))
 
-dp[0][1] = stairs[0]
-dp[1][1] = 0
-
-for i in range(2,N+1):
-    dp[0][i] = max(dp[0][i-2],dp[1][i-2]) + stairs[i-1]
-    dp[1][i] = dp[0][i-1] + stairs[i-1]
-
-for i in dp:
-    print(i)
-
-print(max(dp[0][-1],dp[1][-1]))
+print(dp)
+print(sum(stairs) - min(dp[-2:]))
 
 # memo = [[0,0] for _ in range(300)]
 
