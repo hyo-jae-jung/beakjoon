@@ -8,7 +8,7 @@ for _ in range(N):
 dp = stairs[:3].copy()
 print(dp)
 for i in range(4,N):
-    dp.append(stairs[i] + min(dp[i-1],dp[i-2]))
+    dp.append(stairs[i-1] + min(dp[i-2],dp[i-3]))
 
 print(dp)
 print(sum(stairs) - min(dp[-2:]))
