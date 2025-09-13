@@ -1,4 +1,0 @@
-from sys import stdin  
-
-S = list(map(int,stdin.readline().strip().split()[::2]))
-print('YES' if S[0]+S[1] == S[2] else 'NO')
