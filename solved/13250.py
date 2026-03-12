@@ -9,5 +9,5 @@ for i in range(N-1,-1,-1):
         p+=dp[j]
     p/=6
     dp[i] = 1 + p
-
+    print(dp)
 print(dp[0])
